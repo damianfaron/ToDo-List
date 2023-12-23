@@ -37,6 +37,7 @@ const preparedDOMEvents = () => {
      addButton.addEventListener('click', addNewTask)
      ulList.addEventListener('click', checkClick)
      popupCloseButton.addEventListener('click', closeEditPopup)
+     popupAddButton.addEventListener('click', changeTodoText)
 }
 
 
@@ -92,7 +93,17 @@ const editToDo = e => {
 
 const closeEditPopup = () => {
     popup.style.display = 'none'
+    popupInfo.textContent = ''
 }
 
+const changeTodoText = () => {
+    if (popupInput.value !== ''){
+        toDoEdit.firstChild.textContent = popupInput.value
+        popup.style.display = 'none'
+        popupInfo.textContent = ''
+    } else {
+        popupInfo.textContent = 'Podaj jakiś tekst'
+    }
+}
 
 document.addEventListener('DOMContentLoaded', main) 
