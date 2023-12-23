@@ -82,6 +82,8 @@ const checkClick = e => {
         e.target.classList.toggle('completed')
     } else if (e.target.matches('.edit')) {
         editToDo(e)
+    } else if (e.target.matches('.delete')) {
+        deleteTodo(e)
     }
 }
 
@@ -104,6 +106,10 @@ const changeTodoText = () => {
     } else {
         popupInfo.textContent = 'Podaj jakiś tekst'
     }
+}
+
+const deleteTodo = e => {
+    e.target.closest('li').remove()
 }
 
 document.addEventListener('DOMContentLoaded', main) 
