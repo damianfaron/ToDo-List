@@ -4,6 +4,12 @@ let addButton
 let ulList 
 let newTodo
 
+let popup
+let popupInfo
+let toDoEdit
+let popupInput 
+let popupAddButton 
+let popupCloseButton
 
 
 
@@ -18,12 +24,19 @@ const prepareDOMElements = () => {
     errorInfo = document.querySelector('.error-info')
     addButton = document.querySelector('.btn-add')
     ulList = document.querySelector('.todolist ul')
+    popup = document.querySelector('.popup')
+    popupInfo = document.querySelector('.popup-info')
+    popupInput = document.querySelector('.popup-input')
+    popupAddButton = document.querySelector('.accept')
+    popupCloseButton = document.querySelector('.cancel')
+
 }
 
 const preparedDOMEvents = () => {
      /* nasłuchiwanie*/
      addButton.addEventListener('click', addNewTask)
      ulList.addEventListener('click', checkClick)
+     popupCloseButton.addEventListener('click', closeEditPopup)
 }
 
 
@@ -66,12 +79,20 @@ const checkClick = e => {
     if (e.target.matches('.complete')) {
         e.target.closest('li').classList.toggle('completed');
         e.target.classList.toggle('completed')
+    } else if (e.target.matches('.edit')) {
+        editToDo(e)
     }
-
-    
 }
 
+const editToDo = e => {
+    toDoEdit = e.target.closest('li')
+    popupInput.value = toDoEdit.firstChild.textContent
+    popup.style.display = 'flex'
+}
 
+const closeEditPopup = () => {
+    popup.style.display = 'none'
+}
 
 
 document.addEventListener('DOMContentLoaded', main) 
