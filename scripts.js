@@ -64,13 +64,13 @@ const createToolArea = (params) => {
 
     const completeButton = document.createElement('button')
     completeButton.classList.add('complete')
-    completeButton.innerHTML = 'OKKK'
+    completeButton.innerHTML = 'Complete'
     const editButton = document.createElement('button')
     editButton.classList.add('edit')
-    editButton.textContent ='EDIT'
+    editButton.textContent ='Edit'
     const deleteButton = document.createElement('button')
     deleteButton.classList.add('delete')
-    deleteButton.innerHTML = 'X'
+    deleteButton.innerHTML = 'Delete'
 
     toolsPanel.append(completeButton, editButton, deleteButton)
 }
